@@ -8,6 +8,7 @@ import android.view.SurfaceView;
 
 
 public class Drawing extends SurfaceView {
+    //Instance variables for customcircles and customrectangles
     public CustomCircle plate;
     public CustomRect sausage;
     public CustomRect water;
@@ -19,6 +20,7 @@ public class Drawing extends SurfaceView {
 
     private Paint magentaPaint = new Paint();
 
+    //Instance variables for object colors so you can change them with ease
     private int bagelColor = 0xFFF0D1A0;
     private int plateColor = 0xEFEFEFEF;
     private int sausageColor = 0xFF964B00;
@@ -68,6 +70,7 @@ public class Drawing extends SurfaceView {
         cv = canvas;
     }
 
+    //Returns circle object based on number
     public CustomCircle getCircle(int type) {
         if (type == 1) {
             return this.plate;
@@ -77,6 +80,8 @@ public class Drawing extends SurfaceView {
         }
         return null;
     }
+
+    //Returns rectangle object based on number
     public CustomRect getRectangle(int type) {
         if (type == 1) {
             return this.sausage;
@@ -93,6 +98,7 @@ public class Drawing extends SurfaceView {
         return null;
     }
 
+    //sets the color of the rectangle object based on the int based on the above methods
     public void setRectColor(int color, int type) {
         if (type == 1) {
             sausageColor = color;
@@ -107,6 +113,8 @@ public class Drawing extends SurfaceView {
             maskColor = color;
         }
     }
+
+    //sets the color of the circle object based on the int based on the above methods
     public void setCircleColor(int color, int type) {
         if (type == 1) {
             plateColor = color;

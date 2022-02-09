@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //makes sure its landscape to keep drawing dimensions
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+
         //Object connected to surfaceView
         Drawing canvas = findViewById(R.id.surfaceView);
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //Textview
         TextView selectedObject = findViewById(R.id.selectedObject);
 
+        //Instance variables for getCirlce or getRectangle methods
         final int[] currentCircle = {0};
         final int[] currentRect = {0};
 
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                         //Instance variables for coordinates, circle/rectangle objects, and
                         int x = (int)event.getX();
                         int y = (int)event.getY();
+
+                        //Uses method to set customcircle and customrect objects to find if coordinates match up
                         CustomCircle plate = canvas.getCircle(1);
                         CustomCircle bagel = canvas.getCircle(2);
                         CustomRect sausage = canvas.getRectangle(1);
@@ -114,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                             currentCircle[0] = 1;
                             selectedObject.setText(plate.getName());
                         }
+
+                        //sets seekbar values based on color of object
                         redSeekBar.setProgress(red);
                         greenSeekBar.setProgress(green);
                         blueSeekBar.setProgress(blue);
@@ -122,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
+        //Set up listener for redSeekBar and if user changes the seekbar it will get the value of the red and send back a new color value to set the drawing's color as
         redSeekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
@@ -163,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        //Set up listener for greenSeekBar and if user changes the seekbar it will get the value of the green and send back a new color value to set the drawing's color as
         greenSeekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
@@ -203,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        //Set up listener for blueSeekBar and if user changes the seekbar it will get the value of the blue and send back a new color value to set the drawing's color as
         blueSeekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
